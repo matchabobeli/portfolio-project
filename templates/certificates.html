@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Sertifikat - Portfolio{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-12 text-center">Sertifikat</h1>
+    <div id="certificates" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" class="max-w-3xl max-h-screen rounded-xl p-4">
+</div>
+
+<script>
+    async function loadCertificates() {
+        const res = await fetch('/api/certificates/');
+        const certificates = await res.json();
+        const div = document.getElementById('certificates');
+        if (certificates.length === 0) {
+            div.innerHTML = '<p class="text-gray-500 col-span-3 text-center">Belum ada sertifikat.</p>';
+        } else {
+            div.innerHTML = certificates.map(c => `
+            <div class="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden hover:border-purple-500 transition cursor-pointer"
+                 onclick="openLightbox('${c.image}')">
+                ${c.image ? `<img src="${c.image}" class="w-full h-48 object-cover">` :
+                    `<div class="w-full h-48 bg-gray-800 flex items-center justify-center text-gray-600"><i class="fas fa-certificate text-5xl"></i></div>`}
+                <div class="p-4">
+                    <h3 class="font-semibold mb-1">${c.name}</h3>
+                    <p class="text-purple-400 text-sm mb-1">${c.issuer}</p>
+                    <p class="text-gray-500 text-sm">${c.date}</p>
+                </div>
+            </div>
+        `).join('');
+        }
+    }
+
+    function openLightbox(imgUrl) {
+        if (!imgUrl) return;
+        document.getElementById('lightbox-img').src = imgUrl;
+        const lb = document.getElementById('lightbox');
+        lb.classList.remove('hidden');
+        lb.classList.add('flex');
+    }
+
+    function closeLightbox() {
+        const lb = document.getElementById('lightbox');
+        lb.classList.add('hidden');
+        lb.classList.remove('flex');
+    }
+
+    loadCertificates();
+</script>
+{% endblock %}

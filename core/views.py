@@ -1,3 +1,8 @@
+from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Profile, Experience, Education, Skill, Certificate
+from .serializers import ProfileSerializer, ExperienceSerializer, EducationSerializer, SkillSerializer, CertificateSerializer
+
 from rest_framework import viewsets
 from .models import Profile, Experience, Education, Skill, Certificate
 from .serializers import ProfileSerializer, ExperienceSerializer, EducationSerializer, SkillSerializer, CertificateSerializer
@@ -20,4 +25,15 @@ class SkillViewSet(viewsets.ModelViewSet):
 
 class CertificateViewSet(viewsets.ModelViewSet):
     queryset = Certificate.objects.all()
-    serializer_class = CertificateSerializer
+    serializer_class = CertificateSerializer 
+
+    from django.shortcuts import render
+
+def home(request):
+    return render(request, 'home.html')
+
+def cv(request):
+    return render(request, 'cv.html')
+
+def certificates_page(request):
+    return render(request, 'certificates.html')

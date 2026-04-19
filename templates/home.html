@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}Home - Portfolio{% endblock %}
+
+{% block content %}
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-[#ffb6d5]/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#4a6fa5]/10 rounded-full blur-3xl"></div>
+</div>
+
+<section class="min-h-screen flex items-center justify-center px-6 relative">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        <div class="flex-1">
+            <p class="text-[#ffb6d5] text-sm font-medium tracking-widest uppercase mb-4">— Hello, i'm</p>
+            <h1 class="text-6xl font-bold mb-3 text-white glow-pink" id="hero-name">Annisa Salsabila</h1>
+            <h2 class="text-xl text-[#7a9cc5] mb-6 font-light" id="hero-title">Public Relation Enthusiast</h2>
+            <p class="text-gray-400 leading-relaxed mb-10 max-w-lg" id="hero-bio">
+                Information Systems undergraduate experienced in event coordination, stakeholder management, and team
+                leadership.
+            </p>
+            <div class="flex gap-4 mb-8">
+                <a href="/cv/"
+                    class="bg-[#ffb6d5]/10 hover:bg-[#ffb6d5]/20 border border-[#ffb6d5]/30 hover:border-[#ffb6d5]/60 text-[#ffb6d5] px-6 py-3 rounded-lg transition font-medium text-sm">
+                    Lihat CV →
+                </a>
+                <a href="/certificates/"
+                    class="bg-[#1e2a4a]/50 hover:bg-[#1e2a4a] border border-[#2a3a5a] hover:border-[#4a6fa5] text-gray-300 hover:text-white px-6 py-3 rounded-lg transition font-medium text-sm">
+                    Sertifikat
+                </a>
+            </div>
+            <div class="flex gap-4" id="hero-links"></div>
+        </div>
+        <div class="relative">
+            <div class="w-56 h-56 rounded-full bg-gradient-to-br from-[#1e2a4a] to-[#2a1a2e] border border-[#ffb6d5]/20 glow-border flex items-center justify-center text-5xl font-bold text-[#ffb6d5] overflow-hidden"
+                id="hero-photo">
+                AS
+            </div>
+            <div class="absolute inset-0 rounded-full bg-[#ffb6d5]/5 blur-xl"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    async function loadProfile() {
+        const res = await fetch('/api/profiles/');
+        const profiles = await res.json();
+        if (profiles.length === 0) return;
+        const p = profiles[0];
+
+        if (p.name) document.getElementById('hero-name').textContent = p.name;
+        if (p.title) document.getElementById('hero-title').textContent = p.title;
+        if (p.bio) document.getElementById('hero-bio').textContent = p.bio;
+
+        if (p.photo) {
+            document.getElementById('hero-photo').innerHTML = `<img src="${p.photo}" class="w-full h-full object-cover">`;
+        }
+
+        let links = '';
+        if (p.github) links += `<a href="${p.github}" target="_blank" class="text-gray-500 hover:text-white transition text-xl"><i class="fab fa-github"></i></a>`;
+        if (p.linkedin) links += `<a href="${p.linkedin}" target="_blank" class="text-gray-500 hover:text-blue-400 transition text-xl"><i class="fab fa-linkedin"></i></a>`;
+        if (p.email) links += `<a href="mailto:${p.email}" class="text-gray-500 hover:text-[#ffb6d5] transition text-xl"><i class="fas fa-envelope"></i></a>`;
+        if (p.phone) links += `<a href="https://wa.me/${p.phone}" target="_blank" class="text-gray-500 hover:text-green-400 transition text-xl"><i class="fab fa-whatsapp"></i></a>`;
+        document.getElementById('hero-links').innerHTML = links;
+    }
+
+    loadProfile();
+</script>
+{% endblock %}

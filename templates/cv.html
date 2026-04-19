@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block title %}CV - Portfolio{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-12 text-center">Curriculum Vitae</h1>
+
+    <!-- Experience -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-purple-400 border-b border-gray-800 pb-2">Pengalaman</h2>
+        <div id="experiences" class="space-y-6"></div>
+    </section>
+
+    <!-- Education -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-purple-400 border-b border-gray-800 pb-2">Pendidikan</h2>
+        <div id="educations" class="space-y-6"></div>
+    </section>
+
+    <!-- Skills -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-purple-400 border-b border-gray-800 pb-2">Skill</h2>
+        <div id="skills" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+    </section>
+</div>
+
+<script>
+    async function loadData() {
+        // Load experiences
+        const expRes = await fetch('/api/experiences/');
+        const experiences = await expRes.json();
+        const expDiv = document.getElementById('experiences');
+        if (experiences.length === 0) {
+            expDiv.innerHTML = '<p class="text-gray-500">Belum ada data.</p>';
+        } else {
+            expDiv.innerHTML = experiences.map(e => `
+            <div class="bg-gray-900 rounded-xl p-6 border border-gray-800">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-semibold">${e.position}</h3>
+                    <span class="text-sm text-gray-500">${e.start_date} - ${e.is_current ? 'Sekarang' : e.end_date}</span>
+                </div>
+                <p class="text-purple-400 mb-2">${e.company}</p>
+                <p class="text-gray-400 text-sm">${e.description}</p>
+            </div>
+        `).join('');
+        }
+
+        // Load educations
+        const eduRes = await fetch('/api/educations/');
+        const educations = await eduRes.json();
+        const eduDiv = document.getElementById('educations');
+        if (educations.length === 0) {
+            eduDiv.innerHTML = '<p class="text-gray-500">Belum ada data.</p>';
+        } else {
+            eduDiv.innerHTML = educations.map(e => `
+            <div class="bg-gray-900 rounded-xl p-6 border border-gray-800">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-semibold">${e.degree} - ${e.field}</h3>
+                    <span class="text-sm text-gray-500">${e.start_date} - ${e.end_date ?? 'Sekarang'}</span>
+                </div>
+                <p class="text-purple-400">${e.institution}</p>
+            </div>
+        `).join('');
+        }
+
+        // Load skills
+        const skillRes = await fetch('/api/skills/');
+        const skills = await skillRes.json();
+        const skillDiv = document.getElementById('skills');
+        if (skills.length === 0) {
+            skillDiv.innerHTML = '<p class="text-gray-500 col-span-3">Belum ada data.</p>';
+        } else {
+            skillDiv.innerHTML = skills.map(s => `
+            <div class="bg-gray-900 rounded-xl p-4 border border-gray-800">
+                <div class="flex justify-between mb-2">
+                    <span class="font-medium">${s.name}</span>
+                    <span class="text-sm text-gray-500">${s.level}%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div class="bg-purple-500 h-2 rounded-full" style="width: ${s.level}%"></div>
+                </div>
+            </div>
+        `).join('');
+        }
+    }
+
+    loadData();
+</script>
+{% endblock %}

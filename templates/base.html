@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glow-pink {
+            text-shadow: 0 0 20px rgba(255, 182, 213, 0.5);
+        }
+
+        .glow-border {
+            box-shadow: 0 0 15px rgba(255, 182, 213, 0.15);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0e1a] text-gray-200">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-[#0d1225]/80 nav-blur border-b border-[#1e2a4a] z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-white">nisa<span class="text-[#ffb6d5]">.</span></a>
+            <div class="flex items-center gap-6">
+                <a href="/" class="text-gray-400 hover:text-[#ffb6d5] transition text-sm">home</a>
+                <a href="/cv/" class="text-gray-400 hover:text-[#ffb6d5] transition text-sm">cv</a>
+                <a href="/certificates/" class="text-gray-400 hover:text-[#ffb6d5] transition text-sm">sertifikat</a>
+                <div class="flex gap-3 ml-2">
+                    <a href="#" class="text-gray-500 hover:text-green-400 transition text-sm"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-[#ffb6d5] transition text-sm"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-blue-400 transition text-sm"><i
+                            class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+
+</html>
