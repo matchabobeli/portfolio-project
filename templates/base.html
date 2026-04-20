@@ -1,59 +1,239 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Portfolio{% endblock %}</title>
+    <title>{% block title %}Annisa Salsabila{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
 
-        body {
+        * {
             font-family: 'Inter', sans-serif;
         }
 
+        .nav-blur {
+            backdrop-filter: blur(16px);
+        }
+
         .glow-pink {
-            text-shadow: 0 0 20px rgba(255, 182, 213, 0.5);
+            text-shadow: 0 0 40px rgba(255, 182, 213, 0.4);
         }
 
         .glow-border {
-            box-shadow: 0 0 15px rgba(255, 182, 213, 0.15);
+            box-shadow: 0 0 30px rgba(255, 182, 213, 0.1);
         }
 
-        .nav-blur {
-            backdrop-filter: blur(12px);
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-hover {
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 182, 213, 0.25);
+            box-shadow: 0 12px 40px rgba(255, 182, 213, 0.07);
+        }
+
+        .star-4 {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatStar 6s ease-in-out infinite;
+        }
+
+        @keyframes floatStar {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.15;
+            }
+
+            50% {
+                transform: translateY(-18px) rotate(15deg);
+                opacity: 0.35;
+            }
+        }
+
+        @keyframes floatStarR {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.1;
+            }
+
+            50% {
+                transform: translateY(14px) rotate(-12deg);
+                opacity: 0.25;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0e1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#ffb6d5, #7a9cc5);
+            border-radius: 2px;
+        }
+
+        .nav-name {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #ffb6d5;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .nav-link.active {
+            color: #ffb6d5;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-contact.active {
+            background: rgba(255, 182, 213, 0.15);
+            border-color: rgba(255, 182, 213, 0.5);
+            color: #ffb6d5;
         }
     </style>
 </head>
 
-<body class="bg-[#0a0e1a] text-gray-200">
+<body class="bg-[#0a0e1a] text-gray-200 overflow-x-hidden">
+
+    <!-- Floating 4-point stars -->
+    <svg class="star-4" style="top:12%;left:5%;width:32px;animation-delay:0s" viewBox="0 0 50 50" fill="none">
+        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#ffb6d5" />
+        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#ffb6d5" />
+    </svg>
+    <svg class="star-4" style="top:20%;right:8%;width:20px;animation-delay:1.5s;animation-name:floatStarR"
+        viewBox="0 0 50 50" fill="none">
+        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#7a9cc5" />
+        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#7a9cc5" />
+    </svg>
+    <svg class="star-4" style="top:55%;left:3%;width:14px;animation-delay:2s" viewBox="0 0 50 50" fill="none">
+        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#ffb6d5" />
+        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#ffb6d5" />
+    </svg>
+    <svg class="star-4" style="top:70%;right:5%;width:24px;animation-delay:0.8s;animation-name:floatStarR"
+        viewBox="0 0 50 50" fill="none">
+        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#ffb6d5" />
+        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#ffb6d5" />
+    </svg>
+    <svg class="star-4" style="top:40%;right:2%;width:10px;animation-delay:3s" viewBox="0 0 50 50" fill="none">
+        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#7a9cc5" />
+        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#7a9cc5" />
+    </svg>
+    <svg class="star-4" style="top:85%;left:15%;width:18px;animation-delay:1s;animation-name:floatStarR"
+        viewBox="0 0 50 50" fill="none">
+        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#ffb6d5" />
+        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#ffb6d5" />
+    </svg>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full bg-[#0d1225]/80 nav-blur border-b border-[#1e2a4a] z-50">
+    <nav class="fixed top-0 w-full bg-[#0d1225]/75 nav-blur border-b border-white/5 z-50">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="text-xl font-bold text-white">nisa<span class="text-[#ffb6d5]">.</span></a>
-            <div class="flex items-center gap-6">
-                <a href="/" class="text-gray-400 hover:text-[#ffb6d5] transition text-sm">home</a>
-                <a href="/cv/" class="text-gray-400 hover:text-[#ffb6d5] transition text-sm">cv</a>
-                <a href="/certificates/" class="text-gray-400 hover:text-[#ffb6d5] transition text-sm">sertifikat</a>
-                <div class="flex gap-3 ml-2">
-                    <a href="#" class="text-gray-500 hover:text-green-400 transition text-sm"><i
-                            class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-[#ffb6d5] transition text-sm"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-blue-400 transition text-sm"><i
-                            class="fab fa-linkedin"></i></a>
-                </div>
+            <a href="/" class="flex items-center gap-2 group">
+                <span
+                    class="nav-name text-xl font-bold text-white group-hover:text-[#ffb6d5] transition-colors duration-300">Annisa
+                    Salsabila</span>
+                <svg width="8" height="8" viewBox="0 0 50 50"
+                    class="mb-1 opacity-70 group-hover:opacity-100 transition">
+                    <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z"
+                        fill="#ffb6d5" />
+                    <path d="M2 25C2 25 18 23 25 25C32 27 48 25 48 25C48 25 32 27 25 25C18 23 2 25 2 25Z"
+                        fill="#ffb6d5" />
+                </svg>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/" class="nav-link text-gray-400 text-sm" data-path="/">Home</a>
+                <a href="/experience/" class="nav-link text-gray-400 text-sm" data-path="/experience/">Experience</a>
+                <a href="/education/" class="nav-link text-gray-400 text-sm" data-path="/education/">Education</a>
+                <a href="/skills/" class="nav-link text-gray-400 text-sm" data-path="/skills/">Skills</a>
+                <a href="/certificates/" class="nav-link text-gray-400 text-sm"
+                    data-path="/certificates/">Certificates</a>
+                <a href="/contact/"
+                    class="nav-contact text-sm px-5 py-2 rounded-lg text-[#ffb6d5] border border-[#ffb6d5]/25 hover:bg-[#ffb6d5]/10 transition-all duration-300"
+                    data-path="/contact/">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main class="pt-16">
+    <main class="pt-16 relative z-10">
         {% block content %}{% endblock %}
     </main>
 
+    <footer class="border-t border-white/5 py-10 mt-16 relative z-10">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <span class="nav-name text-gray-600 text-sm">Annisa Salsabila</span>
+            <span class="text-gray-700 text-xs">© 2026 — Built with Django & Tailwind CSS</span>
+            <div class="flex gap-4">
+                <a href="mailto:annisa310308@gmail.com" class="text-gray-600 hover:text-[#ffb6d5] transition text-sm"><i
+                        class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/6282272895540" class="text-gray-600 hover:text-green-400 transition text-sm"><i
+                        class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/_nisaslsa"
+                    class="text-gray-600 hover:text-pink-400 transition text-sm"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Active nav highlight
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('[data-path]').forEach(link => {
+            if (link.getAttribute('data-path') === currentPath) {
+                link.classList.add('active');
+            }
+        });
+
+        // Fade-in observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 </body>
 
 </html>

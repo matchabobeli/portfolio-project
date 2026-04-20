@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Skills — Annisa Salsabila{% endblock %}
+
+{% block content %}
+<section class="max-w-5xl mx-auto px-6 py-16">
+    <div class="mb-12 fade-in">
+        <p class="text-[#ffb6d5] text-xs font-medium tracking-widest uppercase mb-2">— What I Bring</p>
+        <h1 class="text-4xl font-bold text-white mb-4">Skills</h1>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="fade-in">
+            <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider mb-4">Hard Skills</h2>
+            <div class="space-y-4" id="hard-skills"></div>
+        </div>
+        <div class="fade-in" style="transition-delay: 0.1s">
+            <h2 class="text-sm font-medium text-gray-400 uppercase tracking-wider mb-4">Soft Skills</h2>
+            <div class="space-y-3" id="soft-skills"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const hardSkills = [
+        { name: "Event Coordination & Field Execution", level: 90 },
+        { name: "Stakeholder & Sponsor Management", level: 88 },
+        { name: "Media Partner & External Communication", level: 85 },
+        { name: "Administrative Support & Data Entry", level: 82 },
+        { name: "Microsoft Word & Excel", level: 80 },
+        { name: "Canva — Event Content & Poster Design", level: 85 },
+        { name: "CapCut — Basic Video Editing", level: 70 },
+    ];
+
+    const softSkills = [
+        "Communication & Interpersonal Skills",
+        "Team Coordination & Leadership",
+        "Adaptability & Quick Decision Making",
+        "Time Management & Multitasking",
+        "Attention to Detail",
+        "Problem Solving",
+    ];
+
+    document.getElementById('hard-skills').innerHTML = hardSkills.map(s => `
+    <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 card-hover">
+        <div class="flex justify-between mb-2">
+            <span class="text-sm text-gray-300">${s.name}</span>
+            <span class="text-xs text-[#ffb6d5]">${s.level}%</span>
+        </div>
+        <div class="w-full bg-[#1e2a4a] rounded-full h-1.5">
+            <div class="bg-gradient-to-r from-[#ffb6d5] to-[#7a9cc5] h-1.5 rounded-full transition-all duration-1000" style="width: ${s.level}%"></div>
+        </div>
+    </div>
+`).join('');
+
+    document.getElementById('soft-skills').innerHTML = softSkills.map(s => `
+    <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 card-hover flex items-center gap-3">
+        <div class="w-2 h-2 rounded-full bg-[#ffb6d5] flex-shrink-0"></div>
+        <span class="text-sm text-gray-300">${s}</span>
+    </div>
+`).join('');
+
+    setTimeout(() => document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible')), 100);
+</script>
+{% endblock %}

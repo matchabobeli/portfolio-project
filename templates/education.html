@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Education — Annisa Salsabila{% endblock %}
+
+{% block content %}
+<section class="max-w-5xl mx-auto px-6 py-16">
+    <div class="mb-12 fade-in">
+        <p class="text-[#ffb6d5] text-xs font-medium tracking-widest uppercase mb-2">— Academic Background</p>
+        <h1 class="text-4xl font-bold text-white mb-4">Education</h1>
+    </div>
+    <div id="education-list" class="space-y-6"></div>
+</section>
+
+<script>
+    const staticEducation = [
+        {
+            degree: "Bachelor of Information Systems",
+            institution: "Universitas Sriwijaya",
+            period: "2025 – Present",
+            description: "Currently pursuing an undergraduate degree in Information Systems, focusing on technology, communication systems, and organizational management.",
+            icon: "fa-university"
+        },
+        {
+            degree: "Senior High School — Science",
+            institution: "SMA Negeri 6 Palembang",
+            period: "2022 – 2025",
+            description: "Active in extracurricular activities including Broadcasting Club and Theater & Film Club, winning provincial-level competitions.",
+            icon: "fa-school"
+        }
+    ];
+
+    const container = document.getElementById('education-list');
+    container.innerHTML = staticEducation.map((e, i) => `
+    <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-6 card-hover fade-in flex gap-6" style="transition-delay: ${i * 0.1}s">
+        <div class="w-12 h-12 rounded-xl bg-[#ffb6d5]/10 border border-[#ffb6d5]/20 flex items-center justify-center flex-shrink-0">
+            <i class="fas ${e.icon} text-[#ffb6d5]"></i>
+        </div>
+        <div class="flex-1">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-1 mb-2">
+                <div>
+                    <h3 class="text-lg font-semibold text-white">${e.degree}</h3>
+                    <p class="text-[#ffb6d5] text-sm">${e.institution}</p>
+                </div>
+                <span class="text-xs text-gray-500 bg-[#1e2a4a] px-3 py-1 rounded-full whitespace-nowrap">${e.period}</span>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed">${e.description}</p>
+        </div>
+    </div>
+`).join('');
+
+    setTimeout(() => document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible')), 100);
+</script>
+{% endblock %}
