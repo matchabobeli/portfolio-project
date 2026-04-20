@@ -10,7 +10,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost').split(',')
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-8b830.up.railway.app',
+    'https://web-portofolio-annisa-salsabila.up.railway.app/',
 ]
 
 INSTALLED_APPS = [
