@@ -264,6 +264,28 @@
                 --size: 300px !important;
             }
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .page-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.4s forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.page-leaving {
+            opacity: 0;
+            transition: 0.2s;
+        }
     </style>
 </head>
 
@@ -317,10 +339,11 @@
     <!-- Navbar -->
     <nav class="fixed top-0 w-full bg-[#0d1225]/75 nav-blur border-b border-white/5 z-50">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="flex items-center gap-2 group">
+            <a href="/" class="flex items-center gap-2 group smooth-link" data-path="/">
                 <span
-                    class="nav-name text-xl font-bold text-white group-hover:text-[#ffb6d5] transition-colors duration-300">Annisa
-                    Salsabila</span>
+                    class="nav-name text-xl font-bold text-white group-hover:text-[#ffb6d5] transition-colors duration-300">
+                    Annisa Salsabila
+                </span>
                 <svg width="8" height="8" viewBox="0 0 50 50"
                     class="mb-1 opacity-70 group-hover:opacity-100 transition">
                     <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z"
@@ -330,14 +353,16 @@
                 </svg>
             </a>
             <div class="hidden md:flex items-center gap-8">
-                <a href="/" class="nav-link text-gray-400 text-sm" data-path="/">Home</a>
-                <a href="/experience/" class="nav-link text-gray-400 text-sm" data-path="/experience/">Experience</a>
-                <a href="/education/" class="nav-link text-gray-400 text-sm" data-path="/education/">Education</a>
-                <a href="/skills/" class="nav-link text-gray-400 text-sm" data-path="/skills/">Skills</a>
-                <a href="/certificates/" class="nav-link text-gray-400 text-sm"
+                <a href="/" class="nav-link smooth-link text-gray-400 text-sm" data-path="/">Home</a>
+                <a href="/experience/" class="nav-link smooth-link text-gray-400 text-sm"
+                    data-path="/experience/">Experience</a>
+                <a href="/education/" class="nav-link smooth-link text-gray-400 text-sm"
+                    data-path="/education/">Education</a>
+                <a href="/skills/" class="nav-link smooth-link text-gray-400 text-sm" data-path="/skills/">Skills</a>
+                <a href="/certificates/" class="nav-link smooth-link text-gray-400 text-sm"
                     data-path="/certificates/">Certificates</a>
                 <a href="/contact/"
-                    class="nav-contact text-sm px-5 py-2 rounded-lg text-[#ffb6d5] border border-[#ffb6d5]/25 hover:bg-[#ffb6d5]/10 transition-all duration-300"
+                    class="nav-contact smooth-link text-sm px-5 py-2 rounded-lg text-[#ffb6d5] border border-[#ffb6d5]/25 hover:bg-[#ffb6d5]/10 transition-all duration-300"
                     data-path="/contact/">Contact</a>
             </div>
         </div>
@@ -376,6 +401,21 @@
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+    <script>
+        class SPARouter {
+            constructor() {
+                document.addEventListener('click', e => {
+                    const a = e.target.closest('a[href^="/"]');
+                    if (a && !a.href.includes('://')) {
+                        e.preventDefault();
+                        document.body.classList.add('page-leaving');
+                        setTimeout(() => location.href = a.href, 200);
+                    }
+                });
+            }
+        }
+        new SPARouter();
     </script>
 </body>
 
