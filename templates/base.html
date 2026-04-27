@@ -137,10 +137,69 @@
             border-color: rgba(255, 182, 213, 0.5);
             color: #ffb6d5;
         }
+
+        /* Animated gradient background */
+        .bg-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            animation: glowMove 8s ease-in-out infinite;
+        }
+
+        @keyframes glowMove {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.12;
+            }
+
+            33% {
+                transform: translate(30px, -20px) scale(1.1);
+                opacity: 0.18;
+            }
+
+            66% {
+                transform: translate(-20px, 15px) scale(0.95);
+                opacity: 0.1;
+            }
+        }
+
+        @keyframes glowMoveR {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.08;
+            }
+
+            33% {
+                transform: translate(-25px, 20px) scale(1.05);
+                opacity: 0.14;
+            }
+
+            66% {
+                transform: translate(20px, -15px) scale(1.1);
+                opacity: 0.1;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-[#0a0e1a] text-gray-200 overflow-x-hidden">
+
+    <!-- Animated glow background -->
+    <div class="bg-glow"
+        style="width:500px;height:500px;background:#ffb6d5;top:-100px;left:-150px;animation-name:glowMove;animation-delay:0s">
+    </div>
+    <div class="bg-glow"
+        style="width:600px;height:600px;background:#4a6fa5;bottom:-150px;right:-150px;animation-name:glowMoveR;animation-delay:2s">
+    </div>
+    <div class="bg-glow"
+        style="width:300px;height:300px;background:#ffb6d5;top:50%;left:60%;animation-name:glowMove;animation-delay:4s">
+    </div>
 
     <!-- Floating 4-point stars -->
     <svg class="star-4" style="top:12%;left:5%;width:32px;animation-delay:0s" viewBox="0 0 50 50" fill="none">
@@ -170,6 +229,8 @@
         <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#ffb6d5" />
         <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#ffb6d5" />
     </svg>
+
+
 
     <!-- Navbar -->
     <nav class="fixed top-0 w-full bg-[#0d1225]/75 nav-blur border-b border-white/5 z-50">
