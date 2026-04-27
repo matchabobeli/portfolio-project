@@ -286,10 +286,43 @@
             opacity: 0;
             transition: 0.2s;
         }
+
+        /* Loading bar */
+        #page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            background: linear-gradient(90deg, #ffb6d5, #7a9cc5, #ffb6d5);
+            background-size: 200% 100%;
+            z-index: 9999;
+            transition: width 0.3s ease;
+            animation: loaderShimmer 1.2s linear infinite;
+            box-shadow: 0 0 8px rgba(255, 182, 213, 0.6);
+            opacity: 0;
+        }
+
+        #page-loader.loading {
+            opacity: 1;
+        }
+
+        @keyframes loaderShimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-[#0a0e1a] text-gray-200 overflow-x-hidden">
+
+    <!-- Page loading bar -->
+    <div id="page-loader"></div>
 
     <!-- Floating Glow Orbs - Smooth Random Movement -->
     <div class="floating-glow"
@@ -403,14 +436,39 @@
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
     <script>
+        // Page loading bar
+        const loader = document.getElementById('page-loader');
+
+        function startLoader() {
+            loader.style.width = '0%';
+            loader.classList.add('loading');
+            // Animate to 80% quickly, then wait for page load
+            setTimeout(() => loader.style.width = '30%', 50);
+            setTimeout(() => loader.style.width = '60%', 200);
+            setTimeout(() => loader.style.width = '80%', 400);
+        }
+
+        function finishLoader() {
+            loader.style.width = '100%';
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.transition = 'opacity 0.3s ease, width 0.3s ease';
+            }, 200);
+        }
+
+        // Run finish on page load (coming back from navigation)
+        window.addEventListener('pageshow', () => finishLoader());
+
         class SPARouter {
             constructor() {
                 document.addEventListener('click', e => {
                     const a = e.target.closest('a[href^="/"]');
                     if (a && !a.href.includes('://')) {
                         e.preventDefault();
-                        document.body.classList.add('page-leaving');
-                        setTimeout(() => location.href = a.href, 200);
+                        startLoader();
+                        document.body.style.opacity = '0';
+                        document.body.style.transition = 'opacity 0.15s ease';
+                        setTimeout(() => location.href = a.href, 180);
                     }
                 });
             }
