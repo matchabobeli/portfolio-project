@@ -398,8 +398,61 @@
                     class="nav-contact smooth-link text-sm px-5 py-2 rounded-lg text-[#ffb6d5] border border-[#ffb6d5]/25 hover:bg-[#ffb6d5]/10 transition-all duration-300"
                     data-path="/contact/">Contact</a>
             </div>
+            <!-- Hamburger button (mobile) -->
+            <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 group" aria-label="Open menu">
+                <span class="w-5 h-0.5 bg-gray-400 group-hover:bg-[#ffb6d5] transition-all duration-300 block"
+                    id="hb1"></span>
+                <span class="w-5 h-0.5 bg-gray-400 group-hover:bg-[#ffb6d5] transition-all duration-300 block"
+                    id="hb2"></span>
+                <span class="w-3 h-0.5 bg-gray-400 group-hover:bg-[#ffb6d5] transition-all duration-300 block"
+                    id="hb3"></span>
+            </button>
+        </div>
+        <!-- Mobile menu dropdown -->
+        <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 bg-[#0d1225]/95 nav-blur">
+            <div class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1">
+                <a href="/" class="nav-link smooth-link text-gray-400 text-sm py-2.5 border-b border-white/5"
+                    data-path="/">Home</a>
+                <a href="/experience/" class="nav-link smooth-link text-gray-400 text-sm py-2.5 border-b border-white/5"
+                    data-path="/experience/">Experience</a>
+                <a href="/education/" class="nav-link smooth-link text-gray-400 text-sm py-2.5 border-b border-white/5"
+                    data-path="/education/">Education</a>
+                <a href="/skills/" class="nav-link smooth-link text-gray-400 text-sm py-2.5 border-b border-white/5"
+                    data-path="/skills/">Skills</a>
+                <a href="/certificates/"
+                    class="nav-link smooth-link text-gray-400 text-sm py-2.5 border-b border-white/5"
+                    data-path="/certificates/">Certificates</a>
+                <a href="/contact/"
+                    class="nav-contact smooth-link text-sm py-2.5 mt-1 text-center rounded-lg text-[#ffb6d5] border border-[#ffb6d5]/25"
+                    data-path="/contact/">Contact</a>
+            </div>
         </div>
     </nav>
+    <script>
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hb1 = document.getElementById('hb1');
+        const hb2 = document.getElementById('hb2');
+        const hb3 = document.getElementById('hb3');
+        let menuOpen = false;
+        mobileBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('hidden', !menuOpen);
+            // Animate to X
+            if (menuOpen) {
+                hb1.style.transform = 'translateY(8px) rotate(45deg)';
+                hb2.style.opacity = '0';
+                hb3.style.transform = 'translateY(-4px) rotate(-45deg)';
+                hb3.style.width = '20px';
+            } else {
+                hb1.style.transform = '';
+                hb2.style.opacity = '';
+                hb3.style.transform = '';
+                hb3.style.width = '';
+            }
+        });
+    </script>
 
     <main class="pt-16 relative z-10">
         {% block content %}{% endblock %}
