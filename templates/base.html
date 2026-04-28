@@ -454,24 +454,30 @@
         });
     </script>
 
-    <main class="pt-16 relative z-10">
-        {% block content %}{% endblock %}
-    </main>
+    <!-- pt-16 = navbar height offset -->
+    <div id="page-wrap" class="pt-16 relative z-10 flex flex-col" style="min-height:100vh">
+        <main class="flex-1 flex flex-col">
+            {% block content %}{% endblock %}
+        </main>
 
-    <footer class="border-t border-white/5 py-10 mt-16 relative z-10">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <span class="nav-name text-gray-600 text-sm">Annisa Salsabila</span>
-            <span class="text-gray-700 text-xs">© 2026 — Built with Django & Tailwind CSS</span>
-            <div class="flex gap-4">
-                <a href="mailto:annisa310308@gmail.com" class="text-gray-600 hover:text-[#ffb6d5] transition text-sm"><i
-                        class="fas fa-envelope"></i></a>
-                <a href="https://wa.me/6282272895540" class="text-gray-600 hover:text-green-400 transition text-sm"><i
-                        class="fab fa-whatsapp"></i></a>
-                <a href="https://instagram.com/_nisaslsa"
-                    class="text-gray-600 hover:text-pink-400 transition text-sm"><i class="fab fa-instagram"></i></a>
+        <footer class="border-t border-white/5 py-5 relative z-10">
+            <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <span class="nav-name text-gray-600 text-sm">Annisa Salsabila</span>
+                <span class="text-gray-700 text-xs">© 2026 — Built with Django & Tailwind CSS</span>
+                <div class="flex gap-4">
+                    <a href="mailto:annisa310308@gmail.com"
+                        class="text-gray-600 hover:text-[#ffb6d5] transition text-sm"><i
+                            class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/6282272895540"
+                        class="text-gray-600 hover:text-green-400 transition text-sm"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/_nisaslsa"
+                        class="text-gray-600 hover:text-pink-400 transition text-sm"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script>
         // Active nav highlight
