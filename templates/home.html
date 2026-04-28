@@ -2,24 +2,24 @@
 {% block title %}Annisa Salsabila — Public Relation Enthusiast{% endblock %}
 
 {% block content %}
-{# Homepage: no-scroll, fits exactly 1 viewport #}
-<div class="flex flex-col justify-between flex-1 overflow-hidden" style="min-height:0">
+<div class="flex flex-col justify-between flex-1" style="min-height: calc(100vh - 64px)">
 
     <!-- Hero -->
     <section class="flex-1 flex items-center px-8">
-        <div class="w-full max-w-[1400px] mx-auto flex flex-col-reverse md:flex-row items-center gap-8 md:gap-16 py-4">
+        <div
+            class="w-full max-w-[1400px] mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 py-8">
 
             <!-- Text -->
-            <div class="flex-1 fade-in text-center md:text-left">
-                <p class="text-[#ffb6d5] text-xs font-medium tracking-widest uppercase mb-2">— Hello, I'm</p>
-                <h1 class="text-5xl md:text-6xl font-bold mb-2 text-white leading-tight">Annisa<br>Salsabila</h1>
-                <h2 class="text-base text-[#7a9cc5] mb-4 font-light min-h-[22px]" id="typed-title"></h2>
-                <p class="text-gray-400 leading-relaxed mb-6 max-w-lg text-sm mx-auto md:mx-0">
+            <div class="flex-1 fade-in text-center md:text-left max-w-2xl">
+                <p class="text-[#ffb6d5] text-xs font-medium tracking-widest uppercase mb-3">— Hello, I'm</p>
+                <h1 class="text-6xl md:text-7xl font-bold mb-3 text-white leading-tight">Annisa<br>Salsabila</h1>
+                <h2 class="text-lg text-[#7a9cc5] mb-5 font-light min-h-[26px]" id="typed-title"></h2>
+                <p class="text-gray-400 leading-relaxed mb-7 max-w-xl text-sm mx-auto md:mx-0">
                     Information Systems undergraduate at Sriwijaya University with experience in event coordination,
                     communication, and team management. Passionate about contributing to impactful and well-organized
                     projects.
                 </p>
-                <div class="flex flex-wrap gap-3 mb-6 justify-center md:justify-start">
+                <div class="flex flex-wrap gap-3 mb-7 justify-center md:justify-start">
                     <a href="/experience/"
                         class="bg-[#ffb6d5]/10 hover:bg-[#ffb6d5]/20 border border-[#ffb6d5]/30 hover:border-[#ffb6d5]/60 text-[#ffb6d5] px-5 py-2.5 rounded-lg transition font-medium text-sm">View
                         Experience →</a>
@@ -30,20 +30,23 @@
                         Me</a>
                 </div>
                 <div class="flex gap-4 justify-center md:justify-start">
-                    <a href="mailto:annisa310308@gmail.com" class="text-gray-500 hover:text-[#ffb6d5] transition"><i
+                    <a href="mailto:annisa310308@gmail.com"
+                        class="text-gray-500 hover:text-[#ffb6d5] transition text-lg"><i
                             class="fas fa-envelope"></i></a>
                     <a href="https://wa.me/6282272895540" target="_blank"
-                        class="text-gray-500 hover:text-green-400 transition"><i class="fab fa-whatsapp"></i></a>
+                        class="text-gray-500 hover:text-green-400 transition text-lg"><i
+                            class="fab fa-whatsapp"></i></a>
                     <a href="https://instagram.com/_nisaslsa" target="_blank"
-                        class="text-gray-500 hover:text-pink-400 transition"><i class="fab fa-instagram"></i></a>
+                        class="text-gray-500 hover:text-pink-400 transition text-lg"><i
+                            class="fab fa-instagram"></i></a>
                     <a href="https://www.linkedin.com/in/annisa-salsabila" target="_blank"
-                        class="text-gray-500 hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
+                        class="text-gray-500 hover:text-blue-400 transition text-lg"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
 
-            <!-- Photo — lebih besar di layar laptop -->
-            <div class="relative fade-in flex-shrink-0 flex justify-center" style="transition-delay: 0.2s">
-                <div class="w-56 h-56 md:w-72 md:h-72 rounded-full border border-[#ffb6d5]/20 overflow-hidden bg-gradient-to-br from-[#1e2a4a] to-[#2a1a2e] flex items-center justify-center text-4xl md:text-5xl font-bold text-[#ffb6d5]"
+            <!-- Photo -->
+            <div class="relative fade-in flex-shrink-0 flex justify-center" style="transition-delay:0.2s">
+                <div class="w-64 h-64 md:w-[320px] md:h-[320px] rounded-full border border-[#ffb6d5]/20 overflow-hidden bg-gradient-to-br from-[#1e2a4a] to-[#2a1a2e] flex items-center justify-center text-5xl font-bold text-[#ffb6d5]"
                     id="hero-photo">AS</div>
                 <div class="absolute -inset-4 rounded-full bg-[#ffb6d5]/5 blur-xl -z-10"></div>
                 <div class="absolute -bottom-2 -right-2 w-12 h-12 rounded-full border border-[#ffb6d5]/20 bg-[#0d1225]">
@@ -53,26 +56,26 @@
         </div>
     </section>
 
-    <!-- Quick Stats — nempel ke atas footer -->
-    <section class="px-8 pb-5">
+    <!-- Quick Stats -->
+    <section class="px-8 pb-6">
         <div class="w-full max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 text-center card-hover fade-in">
-                <div class="text-2xl font-bold text-[#ffb6d5] mb-0.5">2+</div>
+                <div class="text-2xl font-bold text-[#ffb6d5] mb-1">2+</div>
                 <div class="text-xs text-gray-500 uppercase tracking-wider">Years Experience</div>
             </div>
             <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 text-center card-hover fade-in"
                 style="transition-delay:.05s">
-                <div class="text-2xl font-bold text-[#ffb6d5] mb-0.5">59+</div>
+                <div class="text-2xl font-bold text-[#ffb6d5] mb-1">59+</div>
                 <div class="text-xs text-gray-500 uppercase tracking-wider">Sponsors Contacted</div>
             </div>
             <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 text-center card-hover fade-in"
                 style="transition-delay:.1s">
-                <div class="text-2xl font-bold text-[#ffb6d5] mb-0.5">9</div>
+                <div class="text-2xl font-bold text-[#ffb6d5] mb-1">9</div>
                 <div class="text-xs text-gray-500 uppercase tracking-wider">Media Partners</div>
             </div>
             <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 text-center card-hover fade-in"
                 style="transition-delay:.15s">
-                <div class="text-2xl font-bold text-[#ffb6d5] mb-0.5">30+</div>
+                <div class="text-2xl font-bold text-[#ffb6d5] mb-1">30+</div>
                 <div class="text-xs text-gray-500 uppercase tracking-wider">Team Members Led</div>
             </div>
         </div>

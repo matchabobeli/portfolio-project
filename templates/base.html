@@ -138,81 +138,6 @@
             color: #ffb6d5;
         }
 
-        /* Animated gradient background */
-        .bg-glow {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            pointer-events: none;
-            z-index: 0;
-            animation: glowMove 8s ease-in-out infinite;
-        }
-
-        @keyframes glowMove {
-
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-                opacity: 0.12;
-            }
-
-            33% {
-                transform: translate(30px, -20px) scale(1.1);
-                opacity: 0.18;
-            }
-
-            66% {
-                transform: translate(-20px, 15px) scale(0.95);
-                opacity: 0.1;
-            }
-        }
-
-        @keyframes glowMoveR {
-
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-                opacity: 0.08;
-            }
-
-            33% {
-                transform: translate(-25px, 20px) scale(1.05);
-                opacity: 0.14;
-            }
-
-            66% {
-                transform: translate(20px, -15px) scale(1.1);
-                opacity: 0.1;
-            }
-        }
-
-        .image-container {
-            position: relative;
-            background: linear-gradient(45deg, #ffb6d5, #4a6fa5);
-            background-size: 400% 400%;
-            animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .image-container img {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Floating Glow Orbs - Smooth Random Movement */
         .floating-glow {
             position: fixed;
             width: var(--size, 400px);
@@ -223,42 +148,34 @@
             opacity: 0.12;
             z-index: 0;
             pointer-events: none;
-
-            /* Smooth floating path */
             animation: floatPath var(--speed, 20s) ease-in-out infinite;
             animation-delay: calc(var(--delay, 0s) * 1s);
         }
 
-        /* Keyframe floating path - elliptical orbit */
         @keyframes floatPath {
 
             0%,
             100% {
-                transform:
-                    translateX(var(--x1, 0%)) translateY(var(--y1, 0%)) scale(1) rotate(0deg);
+                transform: translateX(var(--x1, 0%)) translateY(var(--y1, 0%)) scale(1) rotate(0deg);
                 opacity: 0.12;
             }
 
             25% {
-                transform:
-                    translateX(calc(var(--x1, 0%) * 0.5)) translateY(calc(var(--y1, 0%) * 0.3)) scale(1.1) rotate(90deg);
+                transform: translateX(calc(var(--x1, 0%)*0.5)) translateY(calc(var(--y1, 0%)*0.3)) scale(1.1) rotate(90deg);
                 opacity: 0.18;
             }
 
             50% {
-                transform:
-                    translateX(var(--x2, 20%)) translateY(var(--y2, -10%)) scale(0.95) rotate(180deg);
+                transform: translateX(var(--x2, 20%)) translateY(var(--y2, -10%)) scale(0.95) rotate(180deg);
                 opacity: 0.15;
             }
 
             75% {
-                transform:
-                    translateX(calc(var(--x2, 20%) * 0.7)) translateY(calc(var(--y2, -10%) * 0.6)) scale(1.05) rotate(270deg);
+                transform: translateX(calc(var(--x2, 20%)*0.7)) translateY(calc(var(--y2, -10%)*0.6)) scale(1.05) rotate(270deg);
                 opacity: 0.16;
             }
         }
 
-        /* Responsive - smaller on mobile */
         @media (max-width: 768px) {
             .floating-glow {
                 --size: 300px !important;
@@ -282,12 +199,6 @@
             }
         }
 
-        body.page-leaving {
-            opacity: 0;
-            transition: 0.2s;
-        }
-
-        /* Loading bar */
         #page-loader {
             position: fixed;
             top: 0;
@@ -316,6 +227,32 @@
                 background-position: -200% 0;
             }
         }
+
+        .image-container {
+            position: relative;
+            background: linear-gradient(45deg, #ffb6d5, #4a6fa5);
+            background-size: 400% 400%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .image-container img {
+            position: relative;
+            z-index: 2;
+        }
     </style>
 </head>
 
@@ -324,50 +261,45 @@
     <!-- Page loading bar -->
     <div id="page-loader"></div>
 
-    <!-- Floating Glow Orbs - Smooth Random Movement -->
+    <!-- Floating Glow Orbs -->
     <div class="floating-glow"
-        style="--size:500px; --color:#ffb6d5; --speed:20s; --x1:10%; --y1:10%; --x2:30%; --y2:-20%; top:10%; left:10%;">
+        style="--size:500px;--color:#ffb6d5;--speed:20s;--x1:10%;--y1:10%;--x2:30%;--y2:-20%;top:10%;left:10%;"></div>
+    <div class="floating-glow"
+        style="--size:600px;--color:#4a6fa5;--speed:25s;--x1:-25%;--y1:80%;--x2:20%;--y2:40%;bottom:10%;right:10%;">
     </div>
     <div class="floating-glow"
-        style="--size:600px; --color:#4a6fa5; --speed:25s; --x1:-25%; --y1:80%; --x2:20%; --y2:40%; bottom:10%; right:10%;">
-    </div>
+        style="--size:400px;--color:#ffb6d5;--speed:18s;--x1:50%;--y1:20%;--x2:80%;--y2:60%;top:20%;left:50%;"></div>
     <div class="floating-glow"
-        style="--size:400px; --color:#ffb6d5; --speed:18s; --x1:50%; --y1:20%; --x2:80%; --y2:60%; top:20%; left:50%;">
-    </div>
-    <div class="floating-glow"
-        style="--size:250px; --color:#7a9cc5; --speed:22s; --x1:-15%; --y1:30%; --x2:70%; --y2:10%; top:30%; left:-10%;">
-    </div>
+        style="--size:250px;--color:#7a9cc5;--speed:22s;--x1:-15%;--y1:30%;--x2:70%;--y2:10%;top:30%;left:-10%;"></div>
 
-    <!-- Floating 4-point stars -->
+    <!-- Stars -->
     <svg class="star-4" style="top:12%;left:5%;width:32px;animation-delay:0s" viewBox="0 0 50 50" fill="none">
-        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#ffb6d5" />
-        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#ffb6d5" />
+        <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z" fill="#ffb6d5" />
+        <path d="M2 25C2 25 18 23 25 25C32 27 48 25 48 25C48 25 32 27 25 25C18 23 2 25 2 25Z" fill="#ffb6d5" />
     </svg>
     <svg class="star-4" style="top:20%;right:8%;width:20px;animation-delay:1.5s;animation-name:floatStarR"
         viewBox="0 0 50 50" fill="none">
-        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#7a9cc5" />
-        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#7a9cc5" />
+        <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z" fill="#7a9cc5" />
+        <path d="M2 25C2 25 18 23 25 25C32 27 48 25 48 25C48 25 32 27 25 25C18 23 2 25 2 25Z" fill="#7a9cc5" />
     </svg>
     <svg class="star-4" style="top:55%;left:3%;width:14px;animation-delay:2s" viewBox="0 0 50 50" fill="none">
-        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#ffb6d5" />
-        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#ffb6d5" />
+        <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z" fill="#ffb6d5" />
+        <path d="M2 25C2 25 18 23 25 25C32 27 48 25 48 25C48 25 32 27 25 25C18 23 2 25 2 25Z" fill="#ffb6d5" />
     </svg>
     <svg class="star-4" style="top:70%;right:5%;width:24px;animation-delay:0.8s;animation-name:floatStarR"
         viewBox="0 0 50 50" fill="none">
-        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#ffb6d5" />
-        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#ffb6d5" />
+        <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z" fill="#ffb6d5" />
+        <path d="M2 25C2 25 18 23 25 25C32 27 48 25 48 25C48 25 32 27 25 25C18 23 2 25 2 25Z" fill="#ffb6d5" />
     </svg>
     <svg class="star-4" style="top:40%;right:2%;width:10px;animation-delay:3s" viewBox="0 0 50 50" fill="none">
-        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#7a9cc5" />
-        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#7a9cc5" />
+        <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z" fill="#7a9cc5" />
+        <path d="M2 25C2 25 18 23 25 25C32 27 48 25 48 25C48 25 32 27 25 25C18 23 2 25 2 25Z" fill="#7a9cc5" />
     </svg>
     <svg class="star-4" style="top:85%;left:15%;width:18px;animation-delay:1s;animation-name:floatStarR"
         viewBox="0 0 50 50" fill="none">
-        <path d="M25 2 C25 2 27 18 25 25 C23 32 25 48 25 48 C25 48 23 32 25 25 C27 18 25 2 25 2Z" fill="#ffb6d5" />
-        <path d="M2 25 C2 25 18 23 25 25 C32 27 48 25 48 25 C48 25 32 27 25 25 C18 23 2 25 2 25Z" fill="#ffb6d5" />
+        <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z" fill="#ffb6d5" />
+        <path d="M2 25C2 25 18 23 25 25C32 27 48 25 48 25C48 25 32 27 25 25C18 23 2 25 2 25Z" fill="#ffb6d5" />
     </svg>
-
-
 
     <!-- Navbar -->
     <nav class="fixed top-0 w-full bg-[#0d1225]/75 nav-blur border-b border-white/5 z-50">
@@ -398,7 +330,6 @@
                     class="nav-contact smooth-link text-sm px-5 py-2 rounded-lg text-[#ffb6d5] border border-[#ffb6d5]/25 hover:bg-[#ffb6d5]/10 transition-all duration-300"
                     data-path="/contact/">Contact</a>
             </div>
-            <!-- Hamburger button (mobile) -->
             <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 group" aria-label="Open menu">
                 <span class="w-5 h-0.5 bg-gray-400 group-hover:bg-[#ffb6d5] transition-all duration-300 block"
                     id="hb1"></span>
@@ -408,7 +339,6 @@
                     id="hb3"></span>
             </button>
         </div>
-        <!-- Mobile menu dropdown -->
         <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 bg-[#0d1225]/95 nav-blur">
             <div class="w-full max-w-[1400px] mx-auto px-8 py-4 flex flex-col gap-1">
                 <a href="/" class="nav-link smooth-link text-gray-400 text-sm py-2.5 border-b border-white/5"
@@ -429,7 +359,6 @@
         </div>
     </nav>
     <script>
-        // Mobile menu toggle
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const hb1 = document.getElementById('hb1');
@@ -439,7 +368,6 @@
         mobileBtn.addEventListener('click', () => {
             menuOpen = !menuOpen;
             mobileMenu.classList.toggle('hidden', !menuOpen);
-            // Animate to X
             if (menuOpen) {
                 hb1.style.transform = 'translateY(8px) rotate(45deg)';
                 hb2.style.opacity = '0';
@@ -454,12 +382,13 @@
         });
     </script>
 
-    <div class="pt-16 relative z-10 flex flex-col flex-1">
-        <main class="flex-1">
+    <!-- ✅ FIX: wrapper flex-col, main flex-1 agar footer selalu di bawah -->
+    <div class="pt-16 relative z-10 flex flex-col flex-1 min-h-[calc(100vh-64px)]">
+        <main class="flex-1 overflow-y-auto">
             {% block content %}{% endblock %}
         </main>
 
-        <footer class="border-t border-white/5 py-5 relative z-10">
+        <footer class="border-t border-white/5 py-5 relative z-10 mt-auto">
             <div
                 class="w-full max-w-[1400px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <span class="nav-name text-gray-600 text-sm">Annisa Salsabila</span>
@@ -480,33 +409,25 @@
     </div>
 
     <script>
-        // Active nav highlight
         const currentPath = window.location.pathname;
         document.querySelectorAll('[data-path]').forEach(link => {
-            if (link.getAttribute('data-path') === currentPath) {
-                link.classList.add('active');
-            }
+            if (link.getAttribute('data-path') === currentPath) link.classList.add('active');
         });
 
-        // Fade-in observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
     <script>
-        // Page loading bar
         const loader = document.getElementById('page-loader');
-
         function startLoader() {
             loader.style.width = '0%';
             loader.classList.add('loading');
-            // Animate to 80% quickly, then wait for page load
             setTimeout(() => loader.style.width = '30%', 50);
             setTimeout(() => loader.style.width = '60%', 200);
             setTimeout(() => loader.style.width = '80%', 400);
         }
-
         function finishLoader() {
             loader.style.width = '100%';
             setTimeout(() => {
@@ -514,10 +435,7 @@
                 loader.style.transition = 'opacity 0.3s ease, width 0.3s ease';
             }, 200);
         }
-
-        // Run finish on page load (coming back from navigation)
         window.addEventListener('pageshow', () => finishLoader());
-
         class SPARouter {
             constructor() {
                 document.addEventListener('click', e => {
