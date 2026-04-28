@@ -11,10 +11,11 @@
 
             <!-- Text -->
             <div class="flex-1 fade-in text-center md:text-left">
-                <p class="text-[#ffb6d5] text-xs font-medium tracking-widest uppercase mb-3">— Hello, I'm</p>
-                <h1 class="text-5xl md:text-[4rem] font-bold mb-3 text-white leading-tight">Annisa<br>Salsabila</h1>
-                <h2 class="text-base text-[#7a9cc5] mb-4 font-light min-h-[22px]" id="typed-title"></h2>
-                <p class="text-gray-400 leading-relaxed mb-5 max-w-lg text-sm mx-auto md:mx-0">
+                <p class="text-[#ffb6d5] text-sm font-medium tracking-widest uppercase mb-3">— Hello, I'm</p>
+                <h1 class="text-5xl md:text-[3.25rem] font-bold mb-3 text-white leading-tight whitespace-nowrap">Annisa
+                    Salsabila</h1>
+                <h2 class="text-lg text-[#7a9cc5] mb-4 font-light min-h-[24px]" id="typed-title"></h2>
+                <p class="text-gray-400 leading-relaxed mb-5 max-w-lg text-base mx-auto md:mx-0">
                     Information Systems undergraduate at Sriwijaya University with experience in event coordination,
                     communication, and team management. Passionate about contributing to impactful and well-organized
                     projects.
@@ -69,17 +70,21 @@
                 </div>
             </div>
 
-            <!-- Photo -->
+            <!-- Photo: diperbesar + titik tengah foto sejajar navbar Education -->
             <div class="relative fade-in flex-shrink-0 flex items-center justify-center"
-                style="transition-delay:0.2s; width:280px; height:280px;">
+                style="transition-delay:0.2s; width:320px; height:320px; margin-top:-60px;">
+                <!-- Soft glow biru atas -->
                 <div
-                    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 w-48 h-48 rounded-full bg-[#4a6fa5]/25 blur-2xl -z-10">
+                    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 w-56 h-56 rounded-full bg-[#4a6fa5]/25 blur-2xl -z-10">
                 </div>
-                <div class="w-[240px] h-[240px] rounded-full border-2 border-[#ffb6d5]/30 overflow-hidden bg-gradient-to-br from-[#1e2a4a] to-[#2a1a2e] flex items-center justify-center text-4xl font-bold text-[#ffb6d5] relative z-10"
+                <!-- Frame foto -->
+                <div class="w-[280px] h-[280px] rounded-full border-2 border-[#ffb6d5]/30 overflow-hidden bg-gradient-to-br from-[#1e2a4a] to-[#2a1a2e] flex items-center justify-center text-4xl font-bold text-[#ffb6d5] relative z-10"
                     id="hero-photo">AS</div>
+                <!-- Soft glow pink bawah -->
                 <div
-                    class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 w-40 h-40 rounded-full bg-[#ffb6d5]/20 blur-2xl -z-10">
+                    class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 w-48 h-48 rounded-full bg-[#ffb6d5]/20 blur-2xl -z-10">
                 </div>
+                <!-- Ring luar tipis -->
                 <div class="absolute inset-0 rounded-full border border-[#ffb6d5]/10 z-20 pointer-events-none"></div>
             </div>
         </div>
@@ -108,7 +113,7 @@
 
     async function loadProfile() {
         try {
-            const res = await fetch('/api/profiles/');
+            const res = await fetch('/api/mxprofiles/');
             const profiles = await res.json();
             if (profiles.length === 0) return;
             const p = profiles[0];
