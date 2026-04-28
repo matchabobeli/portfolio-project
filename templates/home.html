@@ -7,19 +7,19 @@
     <!-- Hero -->
     <section class="flex-1 flex items-center">
         <div
-            class="w-full max-w-[1400px] mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-24 gap-10 py-10">
+            class="w-full max-w-[1400px] mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-24 gap-8 py-6">
 
             <!-- Text -->
             <div class="flex-1 fade-in text-center md:text-left">
                 <p class="text-[#ffb6d5] text-xs font-medium tracking-widest uppercase mb-3">— Hello, I'm</p>
                 <h1 class="text-5xl md:text-6xl font-bold mb-3 text-white leading-tight">Annisa<br>Salsabila</h1>
                 <h2 class="text-base text-[#7a9cc5] mb-4 font-light min-h-[22px]" id="typed-title"></h2>
-                <p class="text-gray-400 leading-relaxed mb-6 max-w-md text-sm mx-auto md:mx-0">
+                <p class="text-gray-400 leading-relaxed mb-5 max-w-md text-sm mx-auto md:mx-0">
                     Information Systems undergraduate at Sriwijaya University with experience in event coordination,
                     communication, and team management. Passionate about contributing to impactful and well-organized
                     projects.
                 </p>
-                <div class="flex flex-wrap gap-3 mb-6 justify-center md:justify-start">
+                <div class="flex flex-wrap gap-3 mb-5 justify-center md:justify-start">
                     <a href="/experience/"
                         class="bg-[#ffb6d5]/10 hover:bg-[#ffb6d5]/20 border border-[#ffb6d5]/30 hover:border-[#ffb6d5]/60 text-[#ffb6d5] px-5 py-2.5 rounded-lg transition font-medium text-sm">View
                         Experience →</a>
@@ -29,6 +29,31 @@
                         class="bg-[#1e2a4a]/50 hover:bg-[#1e2a4a] border border-[#2a3a5a] hover:border-[#4a6fa5] text-gray-300 hover:text-white px-5 py-2.5 rounded-lg transition font-medium text-sm">Contact
                         Me</a>
                 </div>
+
+                <!-- Stats langsung di bawah tombol, bukan section terpisah -->
+                <div class="grid grid-cols-4 gap-3 mb-5 max-w-md mx-auto md:mx-0">
+                    <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-3 text-center card-hover fade-in">
+                        <div class="text-lg font-bold text-[#ffb6d5]">2+</div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-wider leading-tight">Years Exp</div>
+                    </div>
+                    <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-3 text-center card-hover fade-in"
+                        style="transition-delay:.05s">
+                        <div class="text-lg font-bold text-[#ffb6d5]">59+</div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-wider leading-tight">Sponsors</div>
+                    </div>
+                    <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-3 text-center card-hover fade-in"
+                        style="transition-delay:.1s">
+                        <div class="text-lg font-bold text-[#ffb6d5]">9</div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-wider leading-tight">Media Partners
+                        </div>
+                    </div>
+                    <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-3 text-center card-hover fade-in"
+                        style="transition-delay:.15s">
+                        <div class="text-lg font-bold text-[#ffb6d5]">30+</div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-wider leading-tight">Team Led</div>
+                    </div>
+                </div>
+
                 <div class="flex gap-4 justify-center md:justify-start">
                     <a href="mailto:annisa310308@gmail.com" class="text-gray-500 hover:text-[#ffb6d5] transition"><i
                             class="fas fa-envelope"></i></a>
@@ -41,39 +66,26 @@
                 </div>
             </div>
 
-            <!-- Photo: 320px dikurangi 30% = ~224px -->
-            <div class="relative fade-in flex-shrink-0" style="transition-delay:0.2s">
-                <div class="w-44 h-44 md:w-[200px] md:h-[200px] rounded-full border border-[#ffb6d5]/20 overflow-hidden bg-gradient-to-br from-[#1e2a4a] to-[#2a1a2e] flex items-center justify-center text-3xl font-bold text-[#ffb6d5]"
-                    id="hero-photo">AS</div>
-                <div class="absolute -inset-3 rounded-full bg-[#ffb6d5]/5 blur-xl -z-10"></div>
-                <div class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full border border-[#ffb6d5]/20 bg-[#0d1225]">
-                </div>
-                <div class="absolute -top-1 -left-1 w-4 h-4 rounded-full border border-[#4a6fa5]/30 bg-[#0d1225]"></div>
-            </div>
-        </div>
-    </section>
+            <!-- Photo: diperbesar + dekorasi menyatu -->
+            <div class="relative fade-in flex-shrink-0 flex items-center justify-center"
+                style="transition-delay:0.2s; width:280px; height:280px;">
 
-    <!-- Quick Stats -->
-    <section class="px-24 pb-6">
-        <div class="w-full max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 text-center card-hover fade-in">
-                <div class="text-2xl font-bold text-[#ffb6d5] mb-1">2+</div>
-                <div class="text-xs text-gray-500 uppercase tracking-wider">Years Experience</div>
-            </div>
-            <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 text-center card-hover fade-in"
-                style="transition-delay:.05s">
-                <div class="text-2xl font-bold text-[#ffb6d5] mb-1">59+</div>
-                <div class="text-xs text-gray-500 uppercase tracking-wider">Sponsors Contacted</div>
-            </div>
-            <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 text-center card-hover fade-in"
-                style="transition-delay:.1s">
-                <div class="text-2xl font-bold text-[#ffb6d5] mb-1">9</div>
-                <div class="text-xs text-gray-500 uppercase tracking-wider">Media Partners</div>
-            </div>
-            <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-4 text-center card-hover fade-in"
-                style="transition-delay:.15s">
-                <div class="text-2xl font-bold text-[#ffb6d5] mb-1">30+</div>
-                <div class="text-xs text-gray-500 uppercase tracking-wider">Team Members Led</div>
+                <!-- Soft glow biru di belakang atas -->
+                <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 w-48 h-48 rounded-full bg-[#4a6fa5]/25 blur-2xl -z-10">
+                </div>
+
+                <!-- Frame foto utama -->
+                <div class="w-[240px] h-[240px] rounded-full border-2 border-[#ffb6d5]/30 overflow-hidden bg-gradient-to-br from-[#1e2a4a] to-[#2a1a2e] flex items-center justify-center text-4xl font-bold text-[#ffb6d5] relative z-10"
+                    id="hero-photo">AS</div>
+
+                <!-- Soft glow pink di bawah, menyatu dengan frame -->
+                <div
+                    class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 w-40 h-40 rounded-full bg-[#ffb6d5]/20 blur-2xl -z-10">
+                </div>
+
+                <!-- Ring luar tipis menyatu -->
+                <div class="absolute inset-0 rounded-full border border-[#ffb6d5]/10 z-20 pointer-events-none"></div>
             </div>
         </div>
     </section>
