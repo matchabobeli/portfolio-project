@@ -319,7 +319,7 @@
     </style>
 </head>
 
-<body class="bg-[#0a0e1a] text-gray-200 overflow-x-hidden">
+<body class="bg-[#0a0e1a] text-gray-200 overflow-x-hidden min-h-screen flex flex-col">
 
     <!-- Page loading bar -->
     <div id="page-loader"></div>
@@ -371,7 +371,7 @@
 
     <!-- Navbar -->
     <nav class="fixed top-0 w-full bg-[#0d1225]/75 nav-blur border-b border-white/5 z-50">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="w-full max-w-[1400px] mx-auto px-8 py-4 flex justify-between items-center">
             <a href="/" class="flex items-center gap-2 group smooth-link" data-path="/">
                 <span
                     class="nav-name text-xl font-bold text-white group-hover:text-[#ffb6d5] transition-colors duration-300">
@@ -410,7 +410,7 @@
         </div>
         <!-- Mobile menu dropdown -->
         <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 bg-[#0d1225]/95 nav-blur">
-            <div class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1">
+            <div class="w-full max-w-[1400px] mx-auto px-8 py-4 flex flex-col gap-1">
                 <a href="/" class="nav-link smooth-link text-gray-400 text-sm py-2.5 border-b border-white/5"
                     data-path="/">Home</a>
                 <a href="/experience/" class="nav-link smooth-link text-gray-400 text-sm py-2.5 border-b border-white/5"
@@ -454,13 +454,14 @@
         });
     </script>
 
-    <div class="pt-16 relative z-10">
-        <main>
+    <div class="pt-16 relative z-10 flex flex-col flex-1">
+        <main class="flex-1">
             {% block content %}{% endblock %}
         </main>
 
         <footer class="border-t border-white/5 py-5 relative z-10">
-            <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div
+                class="w-full max-w-[1400px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <span class="nav-name text-gray-600 text-sm">Annisa Salsabila</span>
                 <span class="text-gray-700 text-xs">© 2026 — Built with Django & Tailwind CSS</span>
                 <div class="flex gap-4">

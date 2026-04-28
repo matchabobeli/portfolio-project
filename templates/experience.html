@@ -1,64 +1,70 @@
 {% extends 'base.html' %}
-{% block title %}Experience — Annisa Salsabila{% endblock %}
+{% block title %}Skills — Annisa Salsabila{% endblock %}
 
 {% block content %}
-<section class="max-w-5xl mx-auto px-6 py-8 page-transition">
+<section class="w-full max-w-[1400px] mx-auto px-8 py-8 page-transition">
     <div class="mb-12 fade-in">
-        <p class="text-[#ffb6d5] text-xs font-medium tracking-widest uppercase mb-2">— Work & Organization</p>
-        <h1 class="text-4xl font-bold text-white mb-4">Experience</h1>
-        <p class="text-gray-400 text-sm max-w-lg">A track record of leading teams, managing events, and building
-            meaningful connections across organizations.</p>
+        <p class="text-[#ffb6d5] text-xs font-medium tracking-widest uppercase mb-2">— What I Bring</p>
+        <h1 class="text-4xl font-bold text-white mb-4">Skills</h1>
     </div>
 
-    <div id="experience-list" class="space-y-6"></div>
+    <div class="grid md:grid-cols-2 gap-12">
+        <div class="fade-in">
+            <h2 class="text-xs font-medium text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                <span class="w-6 h-px bg-[#ffb6d5]"></span> Hard Skills
+            </h2>
+            <div class="space-y-3" id="hard-skills"></div>
+        </div>
+        <div class="fade-in" style="transition-delay: 0.15s">
+            <h2 class="text-xs font-medium text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                <span class="w-6 h-px bg-[#7a9cc5]"></span> Soft Skills
+            </h2>
+            <div class="space-y-3" id="soft-skills"></div>
+        </div>
+    </div>
 </section>
 
 <script>
-    const staticExperiences = [
-        {
-            position: "Head of Sponsorship Division",
-            company: "Seminar Job Finding 2026",
-            period: "2026",
-            description: "Led a 5-person sponsorship division in developing strategic outreach and communication approaches toward potential institutions. Successfully identified and contacted ±59 institutions as sponsorship targets, building a systematic prospect database from scratch. Managed the end-to-end sponsorship process including negotiation and MoU signing. Coordinated task distribution within the team to ensure every member met their outreach targets on time. Served as the primary liaison between the sponsorship division and other committees to synchronize funding needs and event progress.",
-            tags: ["Leadership", "Sponsorship", "Stakeholder Management", "MoU"]
-        },
-        {
-            position: "Freelance — Media Partner Division",
-            company: "SI Fest (Sistem Informasi Festival) 2025",
-            period: "2025",
-            description: "Built and maintained professional communication with 9 media partners, including TVRI Sumatera Selatan, as the official representative of the committee. Supported administrative tasks and participant data management for 20+ registrants throughout the event lifecycle. Actively coordinated between division members and the organizing committee to ensure smooth information flow and operational execution.",
-            tags: ["Media Relations", "Communication", "Administration", "Event Operations"]
-        },
-        {
-            position: "Chairman of Broadcasting Club",
-            company: "SMA Negeri 6 Palembang",
-            period: "2023 – 2024",
-            description: "Led and coordinated a broadcasting team of 30+ members across multiple school media production projects. Recruited ±40 new members through exhibition events, expanding the team's capacity and ensuring strong succession. Acted as the central bridge between OSIS advisors, extracurricular coaches, trainers, and members to maintain smooth organizational communication. Managed the production workflow for audio content, broadcast programs, and podcasts. Represented the school and won a provincial-level podcast competition, demonstrating team coordination excellence at a competitive level. Oversaw technical coordination and communications for the Orban FM Goes to School event as the liaison between the school and external parties.",
-            tags: ["Team Leadership", "Broadcast Production", "Event Coordination", "Public Speaking"]
-        },
-        {
-            position: "Secretary",
-            company: "Theater & Film Club — SMA Negeri 6 Palembang",
-            period: "2023 – 2024",
-            description: "Managed organizational administration, correspondence, and documentation for all performing arts activities. Coordinated and handled 2 province-level competition events from both technical and administrative sides. Processed 10+ member dispensation letters and coordinated with school administration for smooth event execution. Contributed to achieving 3rd Place at the Short Film Competition in commemoration of TVRI Sumatera Selatan's 50th Anniversary.",
-            tags: ["Administration", "Documentation", "Event Management", "Film Production"]
-        }
+    const hardSkills = [
+        "Event Coordination & Field Execution",
+        "Stakeholder & Sponsor Management",
+        "Media Partner & External Communication",
+        "Administrative Support & Data Entry",
+        "Microsoft Word & Excel",
+        "Canva — Event Content & Poster Design",
+        "CapCut — Basic Video Editing",
     ];
 
-    const container = document.getElementById('experience-list');
-    container.innerHTML = staticExperiences.map((e, i) => `
-    <div class="bg-[#0d1225] border border-[#1e2a4a] rounded-xl p-6 card-hover fade-in" style="transition-delay: ${i * 0.1}s">
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
-            <div>
-                <h3 class="text-lg font-semibold text-white mb-1">${e.position}</h3>
-                <p class="text-[#ffb6d5] text-sm">${e.company}</p>
-            </div>
-            <span class="text-xs text-gray-500 bg-[#1e2a4a] px-3 py-1 rounded-full whitespace-nowrap">${e.period}</span>
-        </div>
-        <p class="text-gray-400 text-sm leading-relaxed mb-4">${e.description}</p>
-        <div class="flex flex-wrap gap-2">
-            ${e.tags.map(t => `<span class="text-xs bg-[#ffb6d5]/10 text-[#ffb6d5] border border-[#ffb6d5]/20 px-3 py-1 rounded-full">${t}</span>`).join('')}
-        </div>
+    const softSkills = [
+        "Communication & Interpersonal Skills",
+        "Team Coordination & Leadership",
+        "Adaptability & Quick Decision Making",
+        "Time Management & Multitasking",
+        "Attention to Detail",
+        "Problem Solving",
+    ];
+
+    const starIcon = `<svg width="14" height="14" viewBox="0 0 50 50" fill="none">
+    <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z" fill="#ffb6d5"/>
+    <path d="M2 25C2 25 18 23 25 25C32 27 48 25 48 25C48 25 32 27 25 25C18 23 2 25 2 25Z" fill="#ffb6d5"/>
+</svg>`;
+
+    const blueStarIcon = `<svg width="14" height="14" viewBox="0 0 50 50" fill="none">
+    <path d="M25 2C25 2 27 18 25 25C23 32 25 48 25 48C25 48 23 32 25 25C27 18 25 2 25 2Z" fill="#7a9cc5"/>
+    <path d="M2 25C2 25 18 23 25 25C32 27 48 25 48 25C48 25 32 27 25 25C18 23 2 25 2 25Z" fill="#7a9cc5"/>
+</svg>`;
+
+    document.getElementById('hard-skills').innerHTML = hardSkills.map((s, i) => `
+    <div class="flex items-center gap-3 bg-[#0d1225] border border-[#1e2a4a] rounded-xl px-5 py-3.5 card-hover fade-in" style="transition-delay:${i * 0.05}s">
+        <span class="flex-shrink-0">${starIcon}</span>
+        <span class="text-sm text-gray-300">${s}</span>
+    </div>
+`).join('');
+
+    document.getElementById('soft-skills').innerHTML = softSkills.map((s, i) => `
+    <div class="flex items-center gap-3 bg-[#0d1225] border border-[#1e2a4a] rounded-xl px-5 py-3.5 card-hover fade-in" style="transition-delay:${i * 0.05}s">
+        <span class="flex-shrink-0">${blueStarIcon}</span>
+        <span class="text-sm text-gray-300">${s}</span>
     </div>
 `).join('');
 
